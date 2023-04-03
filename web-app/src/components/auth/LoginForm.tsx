@@ -24,7 +24,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
 
   const dispatch = useDispatch();
 
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   const initialValues: LoginProps = { email: '', password: '' };
   const [userInput, setUserInput] = useState(initialValues);
@@ -59,7 +59,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
       setTimeout(() => {
         dispatch({ type: 'LOGIN', payload: rest });
         Cookies.set('user', JSON.stringify(rest));
-        naviagte('/');
+        navigate('/');
       }, 2000);
     } catch (error: any) {
       setLoading(false);

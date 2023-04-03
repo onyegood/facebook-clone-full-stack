@@ -96,7 +96,7 @@ const RegisterForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
   const getDays = () => new Date(bYear, bMonth, 0).getDate();
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
 
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (values: RegisterProps) => {
     setLoading(true);
@@ -113,7 +113,7 @@ const RegisterForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
       setTimeout(() => {
         dispatch({ type: 'LOGIN', payload: rest });
         Cookies.set('user', JSON.stringify(rest));
-        naviagte('/');
+        navigate('/');
       }, 2000);
     } catch (error: any) {
       setLoading(false);
