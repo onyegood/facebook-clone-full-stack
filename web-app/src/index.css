@@ -18,6 +18,7 @@ a {
   --bg-secondary: #f0f2f5;
   --bg-third: #e4e6eb;
   --bg-forth: #f0f2f5;
+  --color-white: #fff;
   --color-error: #b94a48;
   --color-primary: #050505;
   --color-secondary: #65676b;
@@ -69,3 +70,22 @@ a {
   background: var(--green-color);
 }
 /* Buttons */
+
+/* Hovers */
+.hover1:hover {
+  background: var(--bg-secondary);
+}
+.hover2:hover {
+  background: var(--bg-third);
+}
+/* Hovers */
+
+.hide {
+  display: none;
+}
+
+.card {
+  width: 500px;
+  height: 500px;
+  background: red;
+}

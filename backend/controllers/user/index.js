@@ -170,6 +170,8 @@ exports.login = async (req, res) => {
       picture: user.picture,
       first_name: user.first_name,
       last_name: user.last_name,
+      image: user.image,
+      cover: user.cover,
       token,
       verified: user.verified,
     });

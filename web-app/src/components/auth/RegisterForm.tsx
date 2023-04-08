@@ -11,17 +11,7 @@ import Cookies from 'js-cookie';
 import InputField from '../elements/input-field/registerInput';
 import { useNavigate } from 'react-router';
 import { ShowRegisterFormProps } from './LoginForm';
-
-interface RegisterProps {
-  email: string;
-  password: string;
-  first_name: string;
-  last_name: string;
-  bYear: number;
-  bMonth: number;
-  bDay: number;
-  gender: string;
-}
+import { RegisterProps } from '../../types/user';
 
 const fullYear = new Date().getFullYear();
 
