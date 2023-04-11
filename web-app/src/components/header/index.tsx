@@ -15,15 +15,30 @@ import {
 } from '../../svg';
 
 import { useTypedSelector } from '../../hooks/useSelectorHook';
-import SearchMenu from './SearchMenu';
-import { useState } from 'react';
-import AllMenu from './AllMenu';
+import SearchMenu from './search-menu';
+import { useRef, useState } from 'react';
+import MegaMenu from './mega-menu';
+import useClickOutside from '../../helpers/useClickOutside';
+import UserMenu from './user-menu';
 
 const GlobalHeader = () => {
   const [showSearchMenu, setShowSearchMenu] = useState<boolean>(false);
+  const [showMegaMenu, setShowMegaMenu] = useState<boolean>(false);
+  const [showUserMenu, setUserMegaMenu] = useState<boolean>(false);
+
   const { user } = useTypedSelector((state) => state.users);
 
   const color = '#65676b';
+
+  const _megaMenu = useRef<any>(null);
+  const _userMenu = useRef<any>(null);
+  useClickOutside(_megaMenu, () => {
+    setShowMegaMenu(false);
+  });
+  useClickOutside(_userMenu, () => {
+    setUserMegaMenu(false);
+  });
+
   return (
     <header>
       <div className="header_left">
@@ -65,9 +80,11 @@ const GlobalHeader = () => {
           <img src={user?.image} alt={user?.first_name} />
           <span>{user?.first_name}</span>
         </Link>
-        <div className="circle_icon hover1">
-          <Menu />
-          <AllMenu />
+        <div className="circle_icon hover1" ref={_megaMenu}>
+          <div onClick={() => setShowMegaMenu((prev) => !prev)}>
+            <Menu />
+          </div>
+          {showMegaMenu && <MegaMenu />}
         </div>
         <div className="circle_icon hover1">
           <Messenger />
@@ -76,8 +93,11 @@ const GlobalHeader = () => {
           <Notifications />
           <div className="right_notification">8+</div>
         </div>
-        <div className="circle_icon hover1">
-          <ArrowDown color={color} />
+        <div className="circle_icon hover1" ref={_userMenu}>
+          <div onClick={() => setUserMegaMenu((prev) => !prev)}>
+            <ArrowDown color={color} />
+          </div>
+          {showUserMenu && <UserMenu user={user} />}
         </div>
       </div>
     </header>

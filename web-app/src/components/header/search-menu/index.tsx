@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import { Return, Search } from '../../svg';
-import useClickOutside from '../../helpers/useClickOutside';
+import { Return, Search } from '../../../svg';
+import useClickOutside from '../../../helpers/useClickOutside';
+import './style.css';
+
 const color = '#65676b';
 
 type SearchMenuParams = {
