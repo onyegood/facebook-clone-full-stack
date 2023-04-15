@@ -2,6 +2,8 @@ import React from 'react';
 import './style.css';
 import { UserInfoType } from '../../../types/user';
 import LeftLink from './LeftLink';
+import { left } from '../../../data/home';
+import { Link } from 'react-router-dom';
 
 type LeftSideBarProps = {
   user: UserInfoType;
@@ -10,14 +12,16 @@ type LeftSideBarProps = {
 const LeftSideBar: React.FC<LeftSideBarProps> = ({ user }) => {
   return (
     <div className="left_sidebar">
-      <div className="left_link">
-        <img src={user?.image} alt={user?.first_name} height={100} />
+      <Link to="/profile" className="left_link hover1">
+        <img src={user?.image} alt={user?.first_name} />
         <span>
           {user?.first_name}
           {user?.last_name}
         </span>
-      </div>
-      <LeftLink img={user.image} text="Hekk" notification={undefined} />
+      </Link>
+      {left.slice(0, 8).map((link, i) => (
+        <LeftLink key={i + 1} {...link} />
+      ))}
     </div>
   );
 };

@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
+
 type LeftLinkProps = {
   img: string;
-  notification: string | undefined;
+  notification?: string;
   text: string;
 };
 const LeftLink: React.FC<LeftLinkProps> = ({ img, notification, text }) => {
   return (
-    <div className="left_link">
+    <Link to="/" className="left_link hover1">
       <img src={`../../../left/${img}.png`} alt={`icon`} />
       {notification !== undefined ? (
         <div className="col">
@@ -15,7 +17,7 @@ const LeftLink: React.FC<LeftLinkProps> = ({ img, notification, text }) => {
       ) : (
         <span>{text}</span>
       )}
-    </div>
+    </Link>
   );
 };
 
