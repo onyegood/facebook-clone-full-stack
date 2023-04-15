@@ -80,7 +80,10 @@ const GlobalHeader = () => {
           <img src={user?.image} alt={user?.first_name} />
           <span>{user?.first_name}</span>
         </Link>
-        <div className="circle_icon hover1" ref={_megaMenu}>
+        <div
+          className={`circle_icon hover1 ${showMegaMenu && 'active_header'}`}
+          ref={_megaMenu}
+        >
           <div onClick={() => setShowMegaMenu((prev) => !prev)}>
             <Menu />
           </div>
@@ -93,7 +96,10 @@ const GlobalHeader = () => {
           <Notifications />
           <div className="right_notification">8+</div>
         </div>
-        <div className="circle_icon hover1" ref={_userMenu}>
+        <div
+          className={`circle_icon hover1 ${showUserMenu && 'active_header'}`}
+          ref={_userMenu}
+        >
           <div onClick={() => setUserMegaMenu((prev) => !prev)}>
             <ArrowDown color={color} />
           </div>
