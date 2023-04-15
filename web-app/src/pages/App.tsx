@@ -4,17 +4,25 @@ import { Routes, Route } from 'react-router';
 import LoginPage from './auth';
 import ProfilePage from './profile';
 import HomePage from './home';
+import ProtectedRoute from '../routes/ProtectedRoute';
+import PublicRoute from '../routes/PublicRoute';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/auth/login" element={<LoginPage />} />
-        <Route path="/auth/register" element={<LoginPage />} />
-        <Route path="/auth/forgot-password" element={<LoginPage />} />
-        <Route path="/auth/reset-password" element={<LoginPage />} />
-        <Route path="/user/profile" element={<ProfilePage />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/register" element={<LoginPage />} />
+          <Route path="/auth/forgot-password" element={<LoginPage />} />
+          <Route path="/auth/reset-password" element={<LoginPage />} />
+        </Route>
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/user/profile" element={<ProfilePage />} />
+        </Route>
+        <Route path="*" element={<h1>Page not found!</h1>} />
       </Routes>
     </BrowserRouter>
   );

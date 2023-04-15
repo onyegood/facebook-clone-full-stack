@@ -101,7 +101,7 @@ const RegisterForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
       setSuccess(data.message);
       const { message, ...rest } = data;
       setTimeout(() => {
-        dispatch({ type: 'LOGIN', payload: rest });
+        dispatch({ type: 'LOGIN', payload: { user: rest } });
         Cookies.set('user', JSON.stringify(rest));
         navigate('/');
       }, 2000);
