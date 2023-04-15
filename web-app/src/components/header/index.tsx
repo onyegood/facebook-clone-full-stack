@@ -14,19 +14,20 @@ import {
   Watch,
 } from '../../svg';
 
-import { useTypedSelector } from '../../hooks/useSelectorHook';
 import SearchMenu from './search-menu';
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import MegaMenu from './mega-menu';
 import useClickOutside from '../../helpers/useClickOutside';
 import UserMenu from './user-menu';
+import { UserInfoType } from '../../types/user';
 
-const GlobalHeader = () => {
+type GlobalHeaderProps = {
+  user: UserInfoType;
+};
+const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
   const [showSearchMenu, setShowSearchMenu] = useState<boolean>(false);
   const [showMegaMenu, setShowMegaMenu] = useState<boolean>(false);
   const [showUserMenu, setUserMegaMenu] = useState<boolean>(false);
-
-  const { user } = useTypedSelector((state) => state.users);
 
   const color = '#65676b';
 
