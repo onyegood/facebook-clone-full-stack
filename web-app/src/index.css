@@ -117,3 +117,12 @@ a {
   background: var(--bg-third);
   cursor: pointer;
 }
+
+/* Active header */
+.active_header {
+  background: var(--light-blue-color);
+}
+/* Active header svg */
+.active_header svg {
+  fill: var(--blue-color);
+}
