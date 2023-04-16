@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="home">
       <GlobalHeader user={user} />
       <LeftSideBar user={user} />
-      <RightSidebar />
+      <RightSidebar user={user} />
     </div>
   );
 };
