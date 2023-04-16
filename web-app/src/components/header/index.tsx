@@ -86,7 +86,9 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
           ref={_megaMenu}
         >
           <div onClick={() => setShowMegaMenu((prev) => !prev)}>
-            <Menu />
+            <div style={{ transform: 'translateY(2px)' }}>
+              <Menu />
+            </div>
           </div>
           {showMegaMenu && <MegaMenu />}
         </div>
@@ -102,7 +104,9 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
           ref={_userMenu}
         >
           <div onClick={() => setUserMegaMenu((prev) => !prev)}>
-            <ArrowDown color={color} />
+            <div style={{ transform: 'translateY(2px)' }}>
+              <ArrowDown color={color} />
+            </div>
           </div>
           {showUserMenu && <UserMenu user={user} />}
         </div>
