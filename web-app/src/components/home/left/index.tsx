@@ -13,7 +13,7 @@ type LeftSideBarProps = {
 
 const LeftSideBar: React.FC<LeftSideBarProps> = ({ user }) => {
   const [showAll, setShowAll] = useState(false);
-  const START_FROM = showAll ? 8 : 0;
+  const START_FROM = 0;
   const STOP_AT = showAll ? left.length : 8;
 
   return (
@@ -50,6 +50,24 @@ const LeftSideBar: React.FC<LeftSideBarProps> = ({ user }) => {
           link="http://localhost.com/youtube"
           img="../../images/insta.png"
         />
+      </div>
+      <div className={`fb_copyright ${showAll && 'relative_fb_copyright'}`}>
+        <Link to="/">Privacy</Link>
+        <span>. </span>
+        <Link to="/">Terms</Link>
+        <span>. </span>
+        <Link to="/">Advertising</Link>
+        <span>. </span>
+        <Link to="/">
+          Ad Choices <i className="ad_choices_icon"></i>
+        </Link>
+        <span>. </span>
+        <Link to="/">Cookies</Link>
+        <span>. </span>
+        <Link to="/">More</Link>
+        <span>. </span>
+        <br />
+        Meta &copy; 2022
       </div>
     </div>
   );

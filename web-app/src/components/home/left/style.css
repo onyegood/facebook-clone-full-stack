@@ -8,6 +8,7 @@
   color: var(--color-primary);
   padding: 15px 0;
   padding-bottom: 5rem;
+  user-select: none;
 }
 .left_link {
   display: flex;
@@ -102,4 +103,17 @@
 }
 .shortcut_item span {
   margin-bottom: 3px;
+}
+.fb_copyright {
+  position: fixed;
+  bottom: 14px;
+  left: 10px;
+  font-size: 12px;
+  color: var(--color-secondary);
+}
+.relative_fb_copyright {
+  position: relative;
+  width: 97%;
+  margin-top: 2rem;
+  bottom: -10px;
 }
