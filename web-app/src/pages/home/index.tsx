@@ -1,19 +1,13 @@
-import { useRef, useState } from 'react';
 import GlobalHeader from '../../components/header';
-import useClickOutside from '../../helpers/useClickOutside';
+import LeftSideBar from '../../components/home/left';
+import { useTypedSelector } from '../../hooks/useSelectorHook';
 
 const HomePage = () => {
-  const [visible, setVisible] = useState<boolean>(true);
-  const el = useRef<any>(null);
-
-  useClickOutside(el, () => {
-    setVisible(false);
-  });
-
+  const { user } = useTypedSelector((state) => state.users);
   return (
-    <div>
-      <GlobalHeader />
-      {visible && <div className="card" ref={el}></div>}
+    <div className="home">
+      <GlobalHeader user={user} />
+      <LeftSideBar user={user} />
     </div>
   );
 };
