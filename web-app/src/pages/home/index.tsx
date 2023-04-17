@@ -1,4 +1,4 @@
-import './style.module.css';
+import './style.css';
 import GlobalHeader from '../../components/header';
 import LeftSideBar from '../../components/home/left';
 import StoriesComponent from '../../components/home/middle/stories';
