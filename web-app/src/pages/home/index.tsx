@@ -1,5 +1,7 @@
+import './style.css';
 import GlobalHeader from '../../components/header';
 import LeftSideBar from '../../components/home/left';
+import StoriesComponent from '../../components/home/middle/stories';
 import RightSidebar from '../../components/home/right';
 import { useTypedSelector } from '../../hooks/useSelectorHook';
 
@@ -9,6 +11,9 @@ const HomePage = () => {
     <div className="home">
       <GlobalHeader user={user} />
       <LeftSideBar user={user} />
+      <div className="home_middle">
+        <StoriesComponent />
+      </div>
       <RightSidebar user={user} />
     </div>
   );
