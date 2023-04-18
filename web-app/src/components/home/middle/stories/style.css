@@ -82,7 +82,22 @@
   bottom: 10px;
   transform: translateX(-50%);
   word-wrap: break-word;
+  width: 100%;
   color: var(--bg-primary);
   font-size: 14px;
   padding-left: 10px;
+}
+.white_arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -5px;
+  box-shadow: 1px 2px var(--shadow-1);
+  cursor: pointer;
 }
