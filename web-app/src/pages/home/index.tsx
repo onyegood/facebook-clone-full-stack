@@ -4,6 +4,7 @@ import LeftSideBar from '../../components/home/left';
 import StoriesComponent from '../../components/home/middle/stories';
 import RightSidebar from '../../components/home/right';
 import { useTypedSelector } from '../../hooks/useSelectorHook';
+import { stories } from '../../data/home';
 
 const HomePage = () => {
   const { user } = useTypedSelector((state) => state.users);
@@ -12,7 +13,7 @@ const HomePage = () => {
       <GlobalHeader user={user} />
       <LeftSideBar user={user} />
       <div className="home_middle">
-        <StoriesComponent />
+        <StoriesComponent stories={stories} />
       </div>
       <RightSidebar user={user} />
     </div>
