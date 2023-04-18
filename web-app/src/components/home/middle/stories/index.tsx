@@ -1,4 +1,5 @@
-import { Plus } from '../../../../svg';
+import { DEFAULT_ICON_COLOR } from '../../../../constants/colors';
+import { ArrowRight, Plus } from '../../../../svg';
 import { UserStory } from '../../../../types/story';
 import StoryItem from './StoryItem';
 import './style.css';
@@ -20,6 +21,9 @@ const StoriesComponent: React.FC<StoriesComponentProps> = ({ stories }) => {
       {stories.map((story, i) => (
         <StoryItem {...story} key={i + 1} />
       ))}
+      <div className="white_arrow">
+        <ArrowRight color={DEFAULT_ICON_COLOR} />
+      </div>
     </div>
   );
 };

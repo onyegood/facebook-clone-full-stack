@@ -3,13 +3,13 @@ import './style.css';
 import { Dots, NewRoom, Search } from '../../../svg';
 import ContactItem from './ContactItem';
 import { UserInfoType } from '../../../types/user';
+import { DEFAULT_ICON_COLOR } from '../../../constants/colors';
 
 type RightSidebarProps = {
   user: UserInfoType;
 };
 
 const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
-  const color = '#65676b';
   return (
     <div className="right_sidebar">
       <div className="heading">Sponsored</div>
@@ -19,13 +19,13 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
           <div className="contacts_header_left">Contacts</div>
           <div className="contacts_header_right">
             <div className="contacts_circle hover1">
-              <NewRoom color={color} />
+              <NewRoom color={DEFAULT_ICON_COLOR} />
             </div>
             <div className="contacts_circle hover1">
-              <Search color={color} />
+              <Search color={DEFAULT_ICON_COLOR} />
             </div>
             <div className="contacts_circle hover1">
-              <Dots color={color} />
+              <Dots color={DEFAULT_ICON_COLOR} />
             </div>
           </div>
         </div>

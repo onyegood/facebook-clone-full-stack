@@ -20,6 +20,7 @@ import MegaMenu from './mega-menu';
 import useClickOutside from '../../helpers/useClickOutside';
 import UserMenu from './user-menu';
 import { UserInfoType } from '../../types/user';
+import { DEFAULT_ICON_COLOR } from '../../constants/colors';
 
 type GlobalHeaderProps = {
   user: UserInfoType;
@@ -28,8 +29,6 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
   const [showSearchMenu, setShowSearchMenu] = useState<boolean>(false);
   const [showMegaMenu, setShowMegaMenu] = useState<boolean>(false);
   const [showUserMenu, setUserMegaMenu] = useState<boolean>(false);
-
-  const color = '#65676b';
 
   const _megaMenu = useRef<any>(null);
   const _userMenu = useRef<any>(null);
@@ -49,7 +48,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
           </div>
         </Link>
         <div className="search search1" onClick={() => setShowSearchMenu(true)}>
-          <Search color={color} />
+          <Search color={DEFAULT_ICON_COLOR} />
           <input
             type="text"
             placeholder="Search facebook"
@@ -63,17 +62,17 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
           <HomeActive />
         </Link>
         <Link to="/" className="middle_icon hover1">
-          <Friends color={color} />
+          <Friends color={DEFAULT_ICON_COLOR} />
         </Link>
         <Link to="/" className="middle_icon hover1">
-          <Watch color={color} />
+          <Watch color={DEFAULT_ICON_COLOR} />
           <div className="middle_notification">9+</div>
         </Link>
         <Link to="/" className="middle_icon hover1">
-          <Market color={color} />
+          <Market color={DEFAULT_ICON_COLOR} />
         </Link>
         <Link to="/" className="middle_icon hover1">
-          <Gaming color={color} />
+          <Gaming color={DEFAULT_ICON_COLOR} />
         </Link>
       </div>
       <div className="header_right">
@@ -105,7 +104,7 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ user }) => {
         >
           <div onClick={() => setUserMegaMenu((prev) => !prev)}>
             <div style={{ transform: 'translateY(2px)' }}>
-              <ArrowDown color={color} />
+              <ArrowDown color={DEFAULT_ICON_COLOR} />
             </div>
           </div>
           {showUserMenu && <UserMenu user={user} />}

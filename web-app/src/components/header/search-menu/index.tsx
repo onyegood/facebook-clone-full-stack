@@ -2,8 +2,7 @@ import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 import { Return, Search } from '../../../svg';
 import useClickOutside from '../../../helpers/useClickOutside';
 import './style.css';
-
-const color = '#65676b';
+import { DEFAULT_ICON_COLOR } from '../../../constants/colors';
 
 type SearchMenuParams = {
   setShowSearchMenu: Dispatch<SetStateAction<boolean>>;
@@ -29,7 +28,7 @@ const SearchMenu: React.FC<SearchMenuParams> = ({ setShowSearchMenu }) => {
             className="circle hover1"
             onClick={() => setShowSearchMenu(false)}
           >
-            <Return color={color} />
+            <Return color={DEFAULT_ICON_COLOR} />
           </div>
         </div>
         <div
@@ -40,7 +39,7 @@ const SearchMenu: React.FC<SearchMenuParams> = ({ setShowSearchMenu }) => {
         >
           {iconVisible && (
             <div>
-              <Search color={color} />
+              <Search color={DEFAULT_ICON_COLOR} />
             </div>
           )}
 
