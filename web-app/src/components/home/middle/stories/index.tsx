@@ -1,11 +1,25 @@
+import { Plus } from '../../../../svg';
+import { UserStory } from '../../../../types/story';
+import StoryItem from './StoryItem';
 import './style.css';
 
-const StoriesComponent: React.FC<{}> = () => {
+type StoriesComponentProps = {
+  stories: UserStory[];
+};
+
+const StoriesComponent: React.FC<StoriesComponentProps> = ({ stories }) => {
   return (
     <div className="stories">
       <div className="create_story_card">
-        <img src="" alt="" />
+        <img src="../../../images/default_pic.png" alt="" />
+        <div className="plus_story">
+          <Plus color="#fff" />
+        </div>
+        <div className="story_create_text">Create Story</div>
       </div>
+      {stories.map((story, i) => (
+        <StoryItem {...story} key={i + 1} />
+      ))}
     </div>
   );
 };
