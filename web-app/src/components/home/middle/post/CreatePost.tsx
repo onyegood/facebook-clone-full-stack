@@ -11,7 +11,7 @@ const CreatePost: React.FC<CreatePostProps> = ({ user }) => {
     <div className="create_post">
       <div className="create_post_header">
         <img src={user?.image} alt={user?.first_name} />
-        <div className="open_post">
+        <div className="open_post hover2">
           What is on your mind, {user?.first_name}?
         </div>
       </div>
