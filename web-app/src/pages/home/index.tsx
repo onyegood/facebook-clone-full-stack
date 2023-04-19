@@ -5,6 +5,7 @@ import StoriesComponent from '../../components/home/middle/stories';
 import RightSidebar from '../../components/home/right';
 import { useTypedSelector } from '../../hooks/useSelectorHook';
 import { stories } from '../../data/home';
+import CreatePost from '../../components/home/middle/post/CreatePost';
 
 const HomePage = () => {
   const { user } = useTypedSelector((state) => state.users);
@@ -14,6 +15,7 @@ const HomePage = () => {
       <LeftSideBar user={user} />
       <div className="home_middle">
         <StoriesComponent stories={stories} />
+        <CreatePost user={user} />
       </div>
       <RightSidebar user={user} />
     </div>
