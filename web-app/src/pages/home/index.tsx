@@ -15,7 +15,7 @@ const HomePage = () => {
       <LeftSideBar user={user} />
       <div className="home_middle">
         <StoriesComponent stories={stories} />
-        <CreatePost />
+        <CreatePost user={user} />
       </div>
       <RightSidebar user={user} />
     </div>
