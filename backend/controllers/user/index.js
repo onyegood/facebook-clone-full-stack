@@ -181,3 +181,13 @@ exports.login = async (req, res) => {
     });
   }
 };
+
+exports.auth = async (req, res) => {
+  try {
+    res.status(200).json({ message: 'Hello, welcome from auth' });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
+};
