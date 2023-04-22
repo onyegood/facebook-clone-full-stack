@@ -71,3 +71,49 @@
 .contact span {
   transform: translateY(-5px);
 }
+
+@media (max-width: 1175px) {
+  .right_sidebar {
+    width: 18vw;
+  }
+}
+
+@media (max-width: 1175px) {
+  .right_sidebar {
+    width: 18vw;
+  }
+}
+
+@media (max-width: 1030px) {
+  .right_sidebar {
+    width: 20vw;
+  }
+  .contacts_header_right {
+    right: 10%;
+  }
+  .contacts_circle {
+    width: 20px;
+  }
+}
+
+@media (max-width: 960px) {
+  .right_sidebar {
+    width: 20vw;
+    left: 75%;
+  }
+  .splitter1 {
+    width: 20vw;
+  }
+  .contacts_circle {
+    width: 30px;
+  }
+  .contacts_header_right {
+    right: 0;
+  }
+}
+
+@media (max-width: 885px) {
+  .right_sidebar {
+    display: none;
+  }
+}

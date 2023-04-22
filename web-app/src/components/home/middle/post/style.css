@@ -52,3 +52,42 @@
   font-weight: 600;
   font-size: 14px;
 }
+
+@media (max-width: 1175px) {
+  .create_post {
+    width: 84%;
+  }
+}
+
+@media (max-width: 1030px) {
+  .create_post {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .create_post {
+    width: 93%;
+  }
+}
+
+@media (max-width: 885px) {
+  .create_post {
+    width: 110%;
+  }
+}
+
+@media (max-width: 620px) {
+  .create_post {
+    width: 100%;
+  }
+  .create_post_icon {
+    font-size: 12px;
+  }
+  .open_post {
+    font-size: 16px;
+  }
+  .create_post_icon svg {
+    width: 20px;
+  }
+}

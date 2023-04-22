@@ -101,3 +101,63 @@
   box-shadow: 1px 2px var(--shadow-1);
   cursor: pointer;
 }
+
+@media (max-width: 1175px) {
+  .stories {
+    width: 84%;
+  }
+}
+
+@media (max-width: 1030px) {
+  .stories {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .stories {
+    width: 95%;
+  }
+}
+
+@media (max-width: 885px) {
+  .stories {
+    width: 113%;
+  }
+}
+
+@media (max-width: 885px) {
+  .stories {
+    grid-template-columns: repeat(6, 13vw);
+  }
+  .story_create_text,
+  .story_profile_name {
+    display: none;
+  }
+  .create_story_card {
+    filter: brightness(96%);
+  }
+  .stories .white_arrow {
+    right: 5px;
+  }
+  .story_profile_pic {
+    width: 7vw;
+    height: 7vw;
+  }
+}
+
+@media (max-width: 620px) {
+  .stories {
+    width: 100%;
+  }
+  .stories .white_arrow {
+    display: none;
+  }
+  .stories {
+    grid-template-columns: repeat(6, 14vw);
+  }
+  .story,
+  .create_story_card {
+    height: 30vw;
+  }
+}
