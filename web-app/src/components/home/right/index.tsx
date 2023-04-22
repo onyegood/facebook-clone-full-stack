@@ -31,8 +31,6 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ user }) => {
         </div>
         <div className="contact_list">
           <ContactItem {...user} />
-          <ContactItem {...user} />
-          <ContactItem {...user} />
         </div>
       </div>
     </div>
