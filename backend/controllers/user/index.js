@@ -144,6 +144,8 @@ exports.register = async (req, res) => {
       first_name: user.first_name,
       last_name: user.last_name,
       token,
+      image: user.image,
+      cover: user.cover,
       verified: user.verified,
       message: 'Register successfully, please activate you email to start.',
     });
@@ -153,19 +155,35 @@ exports.register = async (req, res) => {
 };
 
 exports.activateAccount = async (req, res) => {
-  const { token } = req.body;
-  const user = jwt.verify(token, process.env.TOKEN_SECRET);
-  const check = await User.findById(user.id);
-  if (check.verified) {
-    return res
-      .status(400)
-      .json({ message: 'this email is already activated.' });
-  }
+  try {
+    const validUser = req.user.id;
+    const { token } = req.body;
+    const user = jwt.verify(token, process.env.TOKEN_SECRET);
 
-  await User.findByIdAndUpdate(user.id, { verified: true });
-  return res
-    .status(200)
-    .json({ message: 'Account has been activated successfully.' });
+    if (validUser !== user.id) {
+      return res
+        .status(301)
+        .json({
+          message: "You don't have the authorization to perform this action.",
+        });
+    }
+
+    const check = await User.findById(user.id);
+    if (check.verified) {
+      return res
+        .status(400)
+        .json({ message: 'this email is already activated.' });
+    }
+
+    await User.findByIdAndUpdate(user.id, { verified: true });
+    return res
+      .status(200)
+      .json({ message: 'Account has been activated successfully.' });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 exports.login = async (req, res) => {

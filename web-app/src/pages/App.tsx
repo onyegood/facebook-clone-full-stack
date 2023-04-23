@@ -15,10 +15,6 @@ function App() {
         <Route element={<PublicRoute />}>
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<LoginPage />} />
-          <Route
-            path="/auth/activate/:token"
-            element={<ActivateAccountPage />}
-          />
           <Route path="/auth/forgot-password" element={<LoginPage />} />
           <Route path="/auth/reset-password" element={<LoginPage />} />
         </Route>
@@ -26,6 +22,10 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/user/profile" element={<ProfilePage />} />
+          <Route
+            path="/auth/activate/:token"
+            element={<ActivateAccountPage />}
+          />
         </Route>
         <Route path="*" element={<h1>Page not found!</h1>} />
       </Routes>

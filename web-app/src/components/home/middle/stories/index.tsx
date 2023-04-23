@@ -31,8 +31,6 @@ const StoriesComponent: React.FC<StoriesComponentProps> = ({ stories }) => {
     return stories.length;
   };
 
-  console.log('media885px == ', media885px);
-
   return (
     <div className="stories">
       <div className="create_story_card">
