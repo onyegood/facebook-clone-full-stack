@@ -15,6 +15,11 @@ export function userReducer(state = INITIAL_STATE, action: any) {
   switch (action.type) {
     case 'LOGIN':
       return action.payload;
+    case 'VERIFY':
+      return {
+        ...state,
+        user: { verified: action.payload },
+      };
     default:
       return state;
   }
