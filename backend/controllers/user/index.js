@@ -156,8 +156,18 @@ exports.register = async (req, res) => {
 
 exports.activateAccount = async (req, res) => {
   try {
+    const validUser = req.user.id;
     const { token } = req.body;
     const user = jwt.verify(token, process.env.TOKEN_SECRET);
+
+    if (validUser !== user.id) {
+      return res
+        .status(301)
+        .json({
+          message: "You don't have the authorization to perform this action.",
+        });
+    }
+
     const check = await User.findById(user.id);
     if (check.verified) {
       return res
