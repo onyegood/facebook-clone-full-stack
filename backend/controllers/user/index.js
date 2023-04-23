@@ -161,11 +161,9 @@ exports.activateAccount = async (req, res) => {
     const user = jwt.verify(token, process.env.TOKEN_SECRET);
 
     if (validUser !== user.id) {
-      return res
-        .status(301)
-        .json({
-          message: "You don't have the authorization to perform this action.",
-        });
+      return res.status(301).json({
+        message: "You don't have the authorization to perform this action.",
+      });
     }
 
     const check = await User.findById(user.id);
@@ -201,6 +199,7 @@ exports.login = async (req, res) => {
     if (!user.verified) {
       return res.status(400).json({ message: 'Account not verified' });
     }
+
     const check = await bcrypt.compare(password, user.password);
     if (!check) {
       return res.status(400).json({
@@ -220,6 +219,38 @@ exports.login = async (req, res) => {
       cover: user.cover,
       token,
       verified: user.verified,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+exports.sendVerification = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+
+    if (user.verified) {
+      return res.status(400).json({
+        message: 'This account is already activated.',
+      });
+    }
+
+    const emailVerificationToken = generateToken(
+      { id: user._id.toString() },
+      '30m'
+    );
+
+    /**
+     * TODO: send this url via email
+     */
+    const url = `${process.env.REDIRECT_DOMAIN}/auth/activate/${emailVerificationToken}`;
+    console.log(url);
+
+    return res.status(200).json({
+      message: 'Email verification link has been sent to your email.',
     });
   } catch (error) {
     return res.status(500).json({
