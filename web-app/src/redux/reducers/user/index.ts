@@ -20,6 +20,11 @@ export function userReducer(state = INITIAL_STATE, action: any) {
         ...state,
         user: { verified: action.payload },
       };
+    case 'LOGOUT':
+      return {
+        user: null,
+        users: [],
+      };
     default:
       return state;
   }

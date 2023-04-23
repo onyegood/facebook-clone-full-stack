@@ -1,18 +1,28 @@
 import React, { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserInfoType } from '../../../types/user';
 import './style.css';
 import { userMenuList } from '../../../data';
 import PrivacyPolicy from './PrivacyPolicy';
 import HelpSupport from './HelpSupport';
 import DisplayAccessibility from './DisplayAccessibility';
+import { useDispatch } from 'react-redux';
+import Cookies from 'js-cookie';
 
 type UserMenuProps = {
   user: UserInfoType;
 };
 
 const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [visible, setVisible] = useState<number>(0);
+
+  const logout = () => {
+    Cookies.remove('user');
+    dispatch({ type: 'LOGOUT' });
+    navigate('/auth/login');
+  };
 
   return (
     <div className="mmenu">
@@ -42,7 +52,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
             <div
               className="mmenu_item hover3"
               key={item.id}
-              onClick={() => setVisible(item.id)}
+              onClick={() =>
+                item.name === 'Logout' ? logout() : setVisible(item.id)
+              }
             >
               <div className="small_circle">
                 <i className={item.icon} />
