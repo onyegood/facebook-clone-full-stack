@@ -6,6 +6,7 @@ import RightSidebar from '../../components/home/right';
 import { useTypedSelector } from '../../hooks/useSelectorHook';
 import { stories } from '../../data/home';
 import CreatePost from '../../components/home/middle/post/CreatePost';
+import SendVerification from './send-verification';
 
 const HomePage = () => {
   const { user } = useTypedSelector((state) => state.users);
@@ -15,6 +16,7 @@ const HomePage = () => {
       <LeftSideBar user={user} />
       <div className="home_middle">
         <StoriesComponent stories={stories} />
+        {!user?.verified && <SendVerification user={user} />}
         <CreatePost user={user} />
       </div>
       <RightSidebar user={user} />

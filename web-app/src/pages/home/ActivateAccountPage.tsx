@@ -50,7 +50,7 @@ const HomePage = () => {
   }, [token, user, dispatch, navigate]);
 
   useEffect(() => {
-    // activateAccount();
+    activateAccount();
   }, [activateAccount]);
 
   return (
