@@ -6,8 +6,9 @@ const {
 } = require('../../helpers/validation');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+// const nodemailer = require('nodemailer');
 const { generateToken } = require('../../helpers/tokens');
-const { sendVerificationEmail } = require('../../helpers/mailer');
+// const { sendVerificationEmail } = require('../../helpers/mailer');
 
 exports.register = async (req, res) => {
   try {
@@ -105,8 +106,35 @@ exports.register = async (req, res) => {
       '30m'
     );
 
-    const url = `${process.env.BASE_URL}/activate/${emailVerificationToken}`;
-    // sendVerificationEmail(user.email, user.first_name, url);
+    const url = `${process.env.REDIRECT_DOMAIN}/auth/activate/${emailVerificationToken}`;
+    console.log(url);
+    /**
+     * TODO: Sort out the email not sending issues
+     * sendVerificationEmail(user.email, user.first_name, url);
+
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'devkachi92@gmail.com',
+        pass: '',
+      },
+    });
+
+    var mailOptions = {
+      from: 'devkachi92@gmail.com',
+      to: 'goodmomen@gmail.com',
+      subject: 'Sending Email using Node.js',
+      text: 'That was easy!',
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+*/
     const token = generateToken({ id: user._id.toString() }, '7d');
 
     res.send({

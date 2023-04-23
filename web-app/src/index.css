@@ -64,6 +64,7 @@ a {
   right: 0;
   bottom: 0;
   background: var(--blur);
+  z-index: 2000;
 }
 .btn_blue {
   background: var(--blue-color);

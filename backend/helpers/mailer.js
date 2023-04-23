@@ -4,12 +4,8 @@ const { google } = require('googleapis');
 const { OAuth2 } = google.auth;
 const auth_link = 'https://developers.google.com/oauthplayground';
 
-const {
-  EMAIL,
-  MAILING_ID,
-  MAILING_SECRET,
-  MAILING_REFRESH_TOKEN,
-} = process.env;
+const { EMAIL, MAILING_ID, MAILING_SECRET, MAILING_REFRESH_TOKEN } =
+  process.env;
 
 const auth = new OAuth2(
   MAILING_ID,
@@ -25,20 +21,20 @@ exports.sendVerificationEmail = (email, name, url) => {
 
   const accessToken = auth.getAccessToken();
   const smtp = nodemailer.createTransport({
-    service: "gmail",
+    service: 'gmail',
     auth: {
-      type: "OAuth2",
+      type: 'OAuth2',
       user: EMAIL,
       clientId: MAILING_ID,
       clientSecret: MAILING_SECRET,
       refreshToken: MAILING_REFRESH_TOKEN,
       accessToken,
-    }
+    },
   });
   const mailOptions = {
     from: EMAIL,
     to: email,
-    subject: "Focebook email verification",
+    subject: 'Focebook email verification',
     html: `
     <!DOCTYPE html>
     <html lang="en">
@@ -108,7 +104,7 @@ exports.sendVerificationEmail = (email, name, url) => {
     `,
   };
   smtp.sendMail(mailOptions, (err, res) => {
-    if(err) return err;
+    if (err) return err;
     return res;
   });
-}
+};
