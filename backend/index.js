@@ -17,14 +17,14 @@ const options = {
   useSuccessStatus: 200,
 };
 
-app.use(cors());
+app.use(cors(options));
 // Read all routes dynamically
-readdirSync('./routes').map(
-  (r) => app.use('/api/v1', require('./routes/' + r))
+readdirSync('./routes').map((r) =>
+  app.use('/api/v1', require('./routes/' + r))
 );
 
 mongoose
-  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(() => {
     // Node Server
     const port = process.env.PORT || 8000;
