@@ -7,6 +7,7 @@ import HomePage from './home';
 import ProtectedRoute from '../routes/ProtectedRoute';
 import PublicRoute from '../routes/PublicRoute';
 import ActivateAccountPage from './home/ActivateAccountPage';
+import ResetPasswordPage from './auth/reset-password';
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<LoginPage />} />
           <Route path="/auth/forgot-password" element={<LoginPage />} />
-          <Route path="/auth/reset-password" element={<LoginPage />} />
+          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
         </Route>
 
         <Route element={<ProtectedRoute />}>
