@@ -106,7 +106,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
               </Form>
             )}
           </Formik>
-          <Link to="/auth/forget-password" className="forgot_password">
+          <Link to="/auth/reset-password" className="forgot_password">
             Forgotten password?
           </Link>
           {error && <div className="error_text">{error}</div>}
