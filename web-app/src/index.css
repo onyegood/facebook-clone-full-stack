@@ -50,7 +50,6 @@ a {
   font-family: inherit;
   font-weight: 600;
   font-size: 14px;
-  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,9 +67,14 @@ a {
 }
 .btn_blue {
   background: var(--blue-color);
+  color: #fff;
 }
 .btn_green {
   background: var(--green-color);
+}
+.btn_gray {
+  background: var(--bg-secondary);
+  color: #111;
 }
 /* Buttons */
 

@@ -16,7 +16,6 @@ function App() {
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<LoginPage />} />
           <Route path="/auth/forgot-password" element={<LoginPage />} />
-          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
         </Route>
 
         <Route element={<ProtectedRoute />}>
@@ -27,6 +26,7 @@ function App() {
             element={<ActivateAccountPage />}
           />
         </Route>
+        <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
         <Route path="*" element={<h1>Page not found!</h1>} />
       </Routes>
     </BrowserRouter>
