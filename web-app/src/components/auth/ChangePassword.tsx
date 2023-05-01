@@ -6,21 +6,23 @@ import { useDispatch } from 'react-redux';
 import InputField from '../elements/input-field';
 import { Link } from 'react-router-dom';
 
-type CodeVerificationProps = {
-  code: string;
+type ChangePasswordProps = {
+  password: string;
+  confirm_password: string;
 };
 
-const CodeVerification = () => {
+const ChangePassword = () => {
   const [error, setError] = useState<string>('');
 
   const dispatch = useDispatch();
 
   // const navigate = useNavigate();
-  const initialValues: CodeVerificationProps = {
-    code: '',
+  const initialValues: ChangePasswordProps = {
+    password: '',
+    confirm_password: '',
   };
   const [userInput, setUserInput] = useState(initialValues);
-  const { code } = userInput;
+  const { password, confirm_password } = userInput;
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,10 +30,11 @@ const CodeVerification = () => {
   };
 
   const UserInputValidation = Yup.object({
-    code: Yup.string().required('Verification code is required.'),
+    password: Yup.string().required('Password is required.'),
+    confirm_password: Yup.string().required('Password is required.'),
   });
 
-  const submitCodeVerification = async (values: CodeVerificationProps) => {
+  const submitChangePassword = async (values: ChangePasswordProps) => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_BASE_URL}/users/reset-password`,
@@ -50,25 +53,31 @@ const CodeVerification = () => {
   };
   return (
     <div className="reset_form">
-      <div className="reset_form_header">Code Verification</div>
+      <div className="reset_form_header">Change Password</div>
       <div className="reset_form_text">
-        Please enter code that been sent to your email
+        Please enter a new password for your account.
       </div>
       <Formik
         enableReinitialize
-        initialValues={{ code }}
+        initialValues={{ password, confirm_password }}
         validationSchema={UserInputValidation}
         onSubmit={(values) => {
-          submitCodeVerification(values);
+          submitChangePassword(values);
         }}
       >
-        {(props: FormikProps<CodeVerificationProps>) => (
+        {(props: FormikProps<ChangePasswordProps>) => (
           <Form>
             <div className="reset_text_input">
               <InputField
-                placeholder="verification code"
-                name="code"
-                type="text"
+                placeholder="Enter password"
+                name="password"
+                type="password"
+                onChange={handleInputChange}
+              />
+              <InputField
+                placeholder="Confirm password"
+                name="confirm_password"
+                type="password"
                 onChange={handleInputChange}
               />
             </div>
@@ -89,4 +98,4 @@ const CodeVerification = () => {
   );
 };
 
-export default CodeVerification;
+export default ChangePassword;

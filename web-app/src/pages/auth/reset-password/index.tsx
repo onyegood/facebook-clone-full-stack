@@ -7,10 +7,11 @@ import { useState } from 'react';
 import SendEmail from './SendEmail';
 import CodeVerification from '../../../components/auth/CodeVerification';
 import Footer from '../../../components/auth/Footer';
+import ChangePassword from '../../../components/auth/ChangePassword';
 
 const ResetPasswordPage = () => {
   const { user } = useTypedSelector((state) => state.users);
-  const [visible, setVisible] = useState<number>(2);
+  const [visible, setVisible] = useState<number>(3);
   const { logout } = useLogout();
 
   return (
@@ -36,6 +37,7 @@ const ResetPasswordPage = () => {
         {visible === 0 && <SearchAccount />}
         {visible === 1 && <SendEmail {...user} />}
         {visible === 2 && <CodeVerification />}
+        {visible === 3 && <ChangePassword />}
       </div>
       <Footer />
     </div>
