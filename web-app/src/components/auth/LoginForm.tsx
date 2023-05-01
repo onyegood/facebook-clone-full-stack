@@ -26,7 +26,10 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
 
   const navigate = useNavigate();
 
-  const initialValues: LoginProps = { email: '', password: '' };
+  const initialValues: LoginProps = {
+    email: 'goodmomen@gmail.com',
+    password: '@Password123',
+  };
   const [userInput, setUserInput] = useState(initialValues);
   const { email, password } = userInput;
 
@@ -81,7 +84,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
             enableReinitialize
             initialValues={{ email, password }}
             validationSchema={UserInputValidation}
-            onSubmit={(values, actions) => {
+            onSubmit={(values) => {
               submitLogin(values);
             }}
           >
@@ -96,7 +99,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
                 <InputField
                   name="password"
                   placeholder="Password"
-                  type="password"
+                  type="text"
                   onChange={handleInputChange}
                   bottom
                 />
@@ -106,7 +109,7 @@ const LoginForm: React.FC<ShowRegisterFormProps> = ({ setIsRegister }) => {
               </Form>
             )}
           </Formik>
-          <Link to="/auth/forget-password" className="forgot_password">
+          <Link to="/auth/reset-password" className="forgot_password">
             Forgotten password?
           </Link>
           {error && <div className="error_text">{error}</div>}

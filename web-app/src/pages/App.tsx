@@ -1,4 +1,3 @@
-import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Routes, Route } from 'react-router';
 import LoginPage from './auth';
@@ -17,7 +16,6 @@ function App() {
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<LoginPage />} />
           <Route path="/auth/forgot-password" element={<LoginPage />} />
-          <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
         </Route>
 
         <Route element={<ProtectedRoute />}>
@@ -28,6 +26,7 @@ function App() {
             element={<ActivateAccountPage />}
           />
         </Route>
+        <Route path="/auth/reset-password" element={<ResetPasswordPage />} />
         <Route path="*" element={<h1>Page not found!</h1>} />
       </Routes>
     </BrowserRouter>

@@ -1,28 +1,20 @@
 import React, { Fragment, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserInfoType } from '../../../types/user';
 import './style.css';
 import { userMenuList } from '../../../data';
 import PrivacyPolicy from './PrivacyPolicy';
 import HelpSupport from './HelpSupport';
 import DisplayAccessibility from './DisplayAccessibility';
-import { useDispatch } from 'react-redux';
-import Cookies from 'js-cookie';
+import { useLogout } from '../../../hooks/useLogout';
 
 type UserMenuProps = {
   user: UserInfoType;
 };
 
 const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [visible, setVisible] = useState<number>(0);
-
-  const logout = () => {
-    Cookies.remove('user');
-    dispatch({ type: 'LOGOUT' });
-    navigate('/auth/login');
-  };
+  const { logout } = useLogout();
 
   return (
     <div className="mmenu">
